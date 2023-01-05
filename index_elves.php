@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
     <script src="./js/main.js" defer></script>
-    <script src="./js/confirmation.js"></script>
     <title>Document</title>
       </head>
       <body>
@@ -73,7 +72,7 @@
         <div class="col-sm px-5" style="height:max-content;">
           <p class="title-font-lead">Fill out the following form</p>
           <!-- <form id="formValidation" onsubmit="return validateAll();" action="./results.php"  method="get"> -->
-                    <form action="confirmation.php" class="" onsubmit="return validateAll();">
+                    <form action="confirmation.php" class="" method="POST">
                       
                         <!-- <div id="errormessage"></div> -->
         

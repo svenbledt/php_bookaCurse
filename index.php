@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
     <script src="./js/main.js" defer></script>
-    <script src="./js/confirmation.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -74,7 +73,7 @@
         <div class="col-sm px-5" style="height:max-content;">
           <p class="title-font-lead">Fill out the following form</p>
           <!-- <form id="formValidation" onsubmit="return validateAll();" action="./results.php"  method="get"> -->
-                    <form action="confirmation.php" class="" onsubmit="return validateAll();">
+                    <form action="confirmation.php" class="" method="POST">
                       
                         <!-- <div id="errormessage"></div> -->
         
@@ -84,7 +83,7 @@
                             <span class="input-group-text">
                               <i class="bi bi-envelope-at-fill"></i>
                             </span>
-                            <input type="text" class="form-control text-white bg-dark" name="valMail" id="valMail_k" value="" placeholder="e.g me@expl.com" >
+                            <input type="text" class="form-control text-white bg-dark" name="valMail" id="valMailvalue" placeholder="e.g me@expl.com" >
                             <div class="input-group-text"  style="font-size: 80%"><label for="newsletter">Sub to Newsletter?</label>
                               <input class="form-check-input mt-0 mx-1" name="newsletter" id="newsletter" type="checkbox" value="" aria-label="Checkbox for following text input"></div>
                             </div>
@@ -109,7 +108,7 @@
                               <span class="input-group-text">
                                 <i class="fa-solid fa-circle-user"></i>
                               </span>
-                              <input type="text" class="form-control text-white bg-dark" id="fName" name="fName_k" value="" placeholder="e.g Gaudenz" >
+                              <input type="text" class="form-control text-white bg-dark" id="fName" name="fName" value="" placeholder="e.g Gaudenz" >
                             </div>
                             
                           <label for="lName" class="form-label">Last Name</label>
@@ -118,7 +117,7 @@
                               <span class="input-group-text">
                                 <i class="fa-solid fa-circle-user"></i>
                               </span>
-                              <input type="text" class="form-control text-white bg-dark" id="lName" name="lName_k" value="" placeholder="e.g Raiber" >
+                              <input type="text" class="form-control text-white bg-dark" id="lName" name="lName" value="" placeholder="e.g Raiber" >
                             </div>
         
                             <label for="valAge" class="form-label">Your Age</label>
@@ -127,7 +126,7 @@
                               <span class="input-group-text">
                                 <i class="fa-solid fa-circle-user"></i>
                               </span>
-                              <input type="number" class="form-control text-white bg-dark" id="valAge" name="valAge_k" value=""  min="0" max="150" placeholder="18 to 99">
+                              <input type="number" class="form-control text-white bg-dark" id="valAge" name="valAge" value=""  min="0" max="150" placeholder="18 to 99">
                             </div>                                                                                               
                           </div>
 
