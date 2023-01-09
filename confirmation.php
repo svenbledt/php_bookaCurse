@@ -25,7 +25,32 @@
 
 <body>
     <?php
-    $valMail = $_POST["valMail"];
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    if (empty($_POST["valMail"])) {
+        $emailErr = "Email is required, please try again.";
+        $good = false;
+        $email = $emailErr;
+    } else {
+        $email = test_input($_POST["valMail"]);
+        // check if e-mail address is well-formed
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format, please try again.<br><br> You entered:<font color='black'>$email</font>";
+            $good = false;
+            $email = $emailErr;
+        } else {
+            $emailErr = "Thank you for your registration. Your input values are the following:";
+            $good = true;
+            $email = test_input($_POST['valMail']);
+        }
+    }
+
     $valGender = $_POST["valGender"];
     $fName = $_POST["fName"];
     $lName = $_POST["lName"];
@@ -51,29 +76,30 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1 id="app" style="color:rgb(83, 7, 27)">Thank you for your registration. Your input values are the
-                    following:</h1>
-                <div id="confirmation-message" class="alert alert-warning" role="alert">
-                    <?php
-                    echo "<b>Vorname:</b> $fName<br>";
-                    echo "<b>Nachname:</b> $lName<br>";
-                    echo "<b>Geschlecht:</b> $valGender<br>";
-                    echo "<b>Alter:</b> $valAge<br>";
-                    echo "<b>Telefon:</b> $telNumber<br>";
-                    echo "<b>Email:</b> $valMail<br><br>";
-                    echo "Der Kurs für den du dich entschieden Hast ist <b>\"$lang\"</b>.<br> Dein gewählter Schwirigkeitsgrad: <b>$classLevel</b><br><br>";
-                    echo "Du hast dich entschieden das Newsletter $newsletter zu abbonieren.<br><br>";
-                    echo "Wir werden dich in Kürze über die Daten des Kurses Informieren.<br><br>";
-                    if ($myComment != "") {
-                        echo "Kommentar: $myComment";
-                    }
-                    ?>
-                </div>
+                <h1 id="app" style="color:rgb(83, 7, 27)"><?php echo $emailErr; ?></h1>
+                <?php if ($good == true) { ?>
+                    <div id="confirmation-message" class="alert alert-warning" role="alert">
+                        <?php
+                        echo "<b>Vorname:</b> $fName<br>";
+                        echo "<b>Nachname:</b> $lName<br>";
+                        echo "<b>Geschlecht:</b> $valGender<br>";
+                        echo "<b>Alter:</b> $valAge<br>";
+                        echo "<b>Telefon:</b> $telNumber<br>";
+                        echo "<b>Email:</b> $email<br><br>";
+                        echo "Der Kurs für den du dich entschieden Hast ist <b>\"$lang\"</b>.<br> Dein gewählter Schwirigkeitsgrad: <b>$classLevel</b><br><br>";
+                        echo "Du hast dich entschieden das Newsletter $newsletter zu abbonieren.<br><br>";
+                        echo "Wir werden dich in Kürze über die Daten des Kurses Informieren.<br><br>";
+                        if ($myComment != "") {
+                            echo "Kommentar: $myComment";
+                        }
+                        ?>
+                    </div>
+                <?php } ?>
             </div>
 
             <div class="col-sm">
                 <h1 id="app" style="color:rgb(83, 7, 27)">We value your input always. For questions or ideas write to me
-                    <a href="mailto:gaudenzraiber@yahoo.de" style="font-size:90%;">@Krakatoom</a>
+                    <a href="mailto:sven.bledt@gmail.com" style="font-size:90%;">@svenbledt</a>
                 </h1>
                 <a name="back" id="back" class="btn btn-warning text-white" href="/index.php" role="button">Back to
                     Klingon homepage!</a>
